@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zetkno.findbook.dao.EmployeeMapper">
+  <resultMap id="BaseResultMap" type="com.zetkno.findbook.pojo.Employee">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userName" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="phoneNum" jdbcType="VARCHAR" property="phoneNum" />
+    <result column="administrator" jdbcType="BIT" property="administrator" />
+    <result column="favoriteType" jdbcType="TINYINT" property="favoriteType" />
+    <result column="dailyType" jdbcType="TINYINT" property="dailyType" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="avator" jdbcType="VARCHAR" property="avator" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employee
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zetkno.findbook.pojo.Employee">
+    insert into employee (id, userName, password, 
+      gender, phoneNum, administrator, 
+      favoriteType, dailyType, email, 
+      avator)
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, #{administrator,jdbcType=BIT}, 
+      #{favoriteType,jdbcType=TINYINT}, #{dailyType,jdbcType=TINYINT}, #{email,jdbcType=VARCHAR}, 
+      #{avator,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zetkno.findbook.pojo.Employee">
+    update employee
+    set userName = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      phoneNum = #{phoneNum,jdbcType=VARCHAR},
+      administrator = #{administrator,jdbcType=BIT},
+      favoriteType = #{favoriteType,jdbcType=TINYINT},
+      dailyType = #{dailyType,jdbcType=TINYINT},
+      email = #{email,jdbcType=VARCHAR},
+      avator = #{avator,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, userName, password, gender, phoneNum, administrator, favoriteType, dailyType, 
+    email, avator
+    from employee
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, userName, password, gender, phoneNum, administrator, favoriteType, dailyType, 
+    email, avator
+    from employee
+  </select>
+</mapper>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="application-jdbc.properties"/>
+    <classPathEntry location="${driver.class.path}"/>
+
+
+    <context id="my" targetRuntime="MyBatis3Simple">
+        <commentGenerator>
+            <!--设置不生成注释-->
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}"
+                        password="${jdbc.password}">
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--指定javaBean的生成位置-->
+        <javaModelGenerator targetPackage="${pojo.package}"
+                            targetProject="${target.project}">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--mapper映射文件位置-->
+        <sqlMapGenerator targetPackage="${xml.mapper.package}"
+                         targetProject="${resource.project}">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!--dao接口位置-->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="${dao.package}"
+                             targetProject="${target.project}">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--表对应的bean-->
+        <!--catalog指定数据库名称 如不指定其他数据库有同名的表-->
+        <table schema="root" tableName="employee" domainObjectName="Employee"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+
+        </table>
+        <table schema="root" tableName="book" domainObjectName="Book"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+
+        </table>
+
+    </context>
+</generatorConfiguration>

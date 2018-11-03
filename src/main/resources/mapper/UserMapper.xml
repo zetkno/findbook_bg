@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zetkno.findbook.dao.EmployeeMapper">
-  <resultMap id="BaseResultMap" type="com.zetkno.findbook.pojo.Employee">
-    <id column="id" jdbcType="INTEGER" property="id" />
+<mapper namespace="com.zetkno.findbook.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.zetkno.findbook.pojo.User">
+    <id column="userId" jdbcType="INTEGER" property="userId" />
     <result column="userName" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="gender" jdbcType="VARCHAR" property="gender" />
     <result column="phoneNum" jdbcType="VARCHAR" property="phoneNum" />
-    <result column="administrator" jdbcType="BIT" property="administrator" />
+    <result column="administrator" jdbcType="TINYINT" property="administrator" />
     <result column="favoriteType" jdbcType="TINYINT" property="favoriteType" />
     <result column="dailyType" jdbcType="TINYINT" property="dailyType" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="avator" jdbcType="VARCHAR" property="avator" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from employee
-    where id = #{id,jdbcType=INTEGER}
+    delete from user
+    where userId = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zetkno.findbook.pojo.Employee">
-    insert into employee (id, userName, password, 
+  <insert id="insert" parameterType="com.zetkno.findbook.pojo.User">
+    insert into user (userId, userName, password, 
       gender, phoneNum, administrator, 
       favoriteType, dailyType, email, 
       avator)
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, #{administrator,jdbcType=BIT}, 
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, #{administrator,jdbcType=TINYINT}, 
       #{favoriteType,jdbcType=TINYINT}, #{dailyType,jdbcType=TINYINT}, #{email,jdbcType=VARCHAR}, 
       #{avator,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.zetkno.findbook.pojo.Employee">
-    update employee
+  <update id="updateByPrimaryKey" parameterType="com.zetkno.findbook.pojo.User">
+    update user
     set userName = #{userName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=VARCHAR},
       phoneNum = #{phoneNum,jdbcType=VARCHAR},
-      administrator = #{administrator,jdbcType=BIT},
+      administrator = #{administrator,jdbcType=TINYINT},
       favoriteType = #{favoriteType,jdbcType=TINYINT},
       dailyType = #{dailyType,jdbcType=TINYINT},
       email = #{email,jdbcType=VARCHAR},
       avator = #{avator,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where userId = #{userId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, userName, password, gender, phoneNum, administrator, favoriteType, dailyType, 
-    email, avator
-    from employee
-    where id = #{id,jdbcType=INTEGER}
+    select userId, userName, password, gender, phoneNum, administrator, favoriteType, 
+    dailyType, email, avator
+    from user
+    where userId = #{userId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, userName, password, gender, phoneNum, administrator, favoriteType, dailyType, 
-    email, avator
-    from employee
+    select userId, userName, password, gender, phoneNum, administrator, favoriteType, 
+    dailyType, email, avator
+    from user
   </select>
 </mapper>

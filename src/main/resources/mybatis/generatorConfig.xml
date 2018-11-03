@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <properties resource="application-jdbc.properties"/>
-    <classPathEntry location="${driver.class.path}"/>
+    <!--<classPathEntry location="${driver.class.path}"/>-->
 
 
     <context id="my" targetRuntime="MyBatis3Simple">
@@ -14,7 +14,7 @@
             <property name="suppressDate" value="true"/>
             <property name="suppressAllComments" value="true" />
         </commentGenerator>
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+        <jdbcConnection driverClass="${jdbc.driveClassName}"
                         connectionURL="${jdbc.url}"
                         userId="${jdbc.username}"
                         password="${jdbc.password}">
@@ -47,7 +47,7 @@
 
         <!--表对应的bean-->
         <!--catalog指定数据库名称 如不指定其他数据库有同名的表-->
-        <table schema="root" tableName="employee" domainObjectName="Employee"
+        <table schema="root" tableName="user" domainObjectName="User"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

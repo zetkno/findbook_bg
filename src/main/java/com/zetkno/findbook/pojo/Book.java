@@ -15,7 +15,7 @@ public class Book {
 
     private Byte bookType;
 
-    private Integer bookNumber;
+    private String bookNum;
 
     private String publishHours;
 
@@ -71,12 +71,12 @@ public class Book {
         this.bookType = bookType;
     }
 
-    public Integer getBookNumber() {
-        return bookNumber;
+    public String getBookNum() {
+        return bookNum;
     }
 
-    public void setBookNumber(Integer bookNumber) {
-        this.bookNumber = bookNumber;
+    public void setBookNum(String bookNum) {
+        this.bookNum = bookNum == null ? null : bookNum.trim();
     }
 
     public String getPublishHours() {

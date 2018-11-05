@@ -1,7 +1,7 @@
 package com.zetkno.findbook.pojo;
 
 public class User {
-    private Integer userId;
+    private Integer userid;
 
     private String userName;
 
@@ -11,7 +11,7 @@ public class User {
 
     private String phoneNum;
 
-    private Byte administrator;
+    private Boolean administrator;
 
     private Byte favoriteType;
 
@@ -21,12 +21,12 @@ public class User {
 
     private String avator;
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public String getUserName() {
@@ -61,11 +61,11 @@ public class User {
         this.phoneNum = phoneNum == null ? null : phoneNum.trim();
     }
 
-    public Byte getAdministrator() {
+    public Boolean getAdministrator() {
         return administrator;
     }
 
-    public void setAdministrator(Byte administrator) {
+    public void setAdministrator(Boolean administrator) {
         this.administrator = administrator;
     }
 

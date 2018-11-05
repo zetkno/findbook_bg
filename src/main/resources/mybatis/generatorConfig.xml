@@ -46,7 +46,6 @@
         </javaClientGenerator>
 
         <!--表对应的bean-->
-        <!--catalog指定数据库名称 如不指定其他数据库有同名的表-->
         <table schema="root" tableName="user" domainObjectName="User"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
@@ -61,6 +60,10 @@
             <property name="useActualColumnNames" value="true"/>
 
         </table>
+
+
+
+
 
     </context>
 </generatorConfiguration>

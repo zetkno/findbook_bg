@@ -21,7 +21,7 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
-  jpa:
+
 
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml

@@ -37,12 +37,12 @@ mybatis:
 #spring.datasource.password=root
 
 #server.port=8088
-###配置文件位置
+
 #mybatis.config-location=classpath:mybatis/mybatis-config.xml
 #mybatis.typeAliasesPackage=com.zetkno.findbook.pojo
-### mapper xml 文件地址
+
 #mybatis.mapper-locations=classpath*:mapper/*Mapper.xml
-###日志级别
+
 #logging.level.com.zetkno.findbook.dao=debug
 pagehelper:
   auto-dialect: mysql

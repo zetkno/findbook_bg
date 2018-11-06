@@ -1,8 +1,11 @@
 package com.zetkno.findbook.dao;
 
 import com.zetkno.findbook.pojo.User;
+import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
 
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Integer userid);
 
@@ -13,4 +16,10 @@ public interface UserMapper {
     List<User> selectAll();
 
     int updateByPrimaryKey(User record);
+
+//
+    User selectByUserName(String nmae);
+
+//    查询用户名所对应的密码
+    String selectPasswordByUserName(String userName);
 }

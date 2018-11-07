@@ -7,24 +7,57 @@
     <result column="bookEngName" jdbcType="VARCHAR" property="bookEngName" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="translator" jdbcType="VARCHAR" property="translator" />
-    <result column="bookType" jdbcType="TINYINT" property="bookType" />
-    <result column="bookNumber" jdbcType="INTEGER" property="bookNumber" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="bookNumber" jdbcType="VARCHAR" property="bookNumber" />
     <result column="publishHours" jdbcType="VARCHAR" property="publishHours" />
     <result column="publishDate" jdbcType="TIMESTAMP" property="publishDate" />
     <result column="introduce" jdbcType="VARCHAR" property="introduce" />
   </resultMap>
+  <resultMap id="WithTypeResultMap" type="com.zetkno.findbook.pojo.Book">
+    <id column="bookId" jdbcType="INTEGER" property="bookId" />
+    <result column="bookName" jdbcType="VARCHAR" property="bookName" />
+    <result column="bookEngName" jdbcType="VARCHAR" property="bookEngName" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="translator" jdbcType="VARCHAR" property="translator" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="bookNumber" jdbcType="VARCHAR" property="bookNumber" />
+    <result column="publishHours" jdbcType="VARCHAR" property="publishHours" />
+    <result column="publishDate" jdbcType="TIMESTAMP" property="publishDate" />
+    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+    <association property="category" javaType="com.zetkno.findbook.pojo.BookType">
+      <id column="typeId" property="typeId"/>
+      <result column="parentId" property="parentId"/>
+      <result column="parentName" property="parentName"/>
+      <result column="typeName" property="typeName"/>
+      <result column="typeCode" property="typeCode"/>
+    </association>
+  </resultMap>
+  <sql id="WithBookType_Column_List" >
+     b.bookId, b.bookName, b.bookEngName, b.author, b.translator, b.category, b.bookNumber,
+     b.publishHours, b.publishDate, b.introduce, t.typeId, t.parentId, t.parentName, t.typeCode, t.typeName
+  </sql>
+  <!--带有书籍类型的查询-->
+  <select id="selectAllWithTypeName" resultMap="WithTypeResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="WithBookType_Column_List"/>
+    from book b left join book_type t
+    on b.category = t.typeCode
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from book
     where bookId = #{bookId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zetkno.findbook.pojo.Book">
     insert into book (bookId, bookName, bookEngName, 
-      author, translator, bookType, 
+      author, translator, category,
       bookNumber, publishHours, publishDate, 
       introduce)
     values (#{bookId,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{bookEngName,jdbcType=VARCHAR}, 
-      #{author,jdbcType=VARCHAR}, #{translator,jdbcType=VARCHAR}, #{bookType,jdbcType=TINYINT}, 
-      #{bookNumber,jdbcType=INTEGER}, #{publishHours,jdbcType=VARCHAR}, #{publishDate,jdbcType=TIMESTAMP}, 
+      #{author,jdbcType=VARCHAR}, #{translator,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
+      #{bookNumber,jdbcType=VARCHAR}, #{publishHours,jdbcType=VARCHAR}, #{publishDate,jdbcType=TIMESTAMP},
       #{introduce,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zetkno.findbook.pojo.Book">
@@ -33,21 +66,21 @@
       bookEngName = #{bookEngName,jdbcType=VARCHAR},
       author = #{author,jdbcType=VARCHAR},
       translator = #{translator,jdbcType=VARCHAR},
-      bookType = #{bookType,jdbcType=TINYINT},
-      bookNumber = #{bookNumber,jdbcType=INTEGER},
+      category = #{category,jdbcType=VARCHAR},
+      bookNumber = #{bookNumber,jdbcType=VARCHAR},
       publishHours = #{publishHours,jdbcType=VARCHAR},
       publishDate = #{publishDate,jdbcType=TIMESTAMP},
       introduce = #{introduce,jdbcType=VARCHAR}
     where bookId = #{bookId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select bookId, bookName, bookEngName, author, translator, bookType, bookNumber, publishHours, 
+    select bookId, bookName, bookEngName, author, translator, category, bookNumber, publishHours,
     publishDate, introduce
     from book
     where bookId = #{bookId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select bookId, bookName, bookEngName, author, translator, bookType, bookNumber, publishHours, 
+    select bookId, bookName, bookEngName, author, translator, category, bookNumber, publishHours,
     publishDate, introduce
     from book
   </select>

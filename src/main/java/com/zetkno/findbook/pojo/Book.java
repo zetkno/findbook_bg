@@ -13,9 +13,9 @@ public class Book {
 
     private String translator;
 
-    private Byte bookType;
+    private String category;
 
-    private Integer bookNumber;
+    private String bookNumber;
 
     private String publishHours;
 
@@ -63,19 +63,19 @@ public class Book {
         this.translator = translator == null ? null : translator.trim();
     }
 
-    public Byte getBookType() {
-        return bookType;
+    public String getcategory() {
+        return category;
     }
 
-    public void setBookType(Byte bookType) {
-        this.bookType = bookType;
+    public void setcategory(String category) {
+        this.category = category;
     }
 
-    public Integer getBookNumber() {
+    public String getBookNumber() {
         return bookNumber;
     }
 
-    public void setBookNumber(Integer bookNumber) {
+    public void setBookNumber(String bookNumber) {
         this.bookNumber = bookNumber;
     }
 

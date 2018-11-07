@@ -3,6 +3,7 @@ package com.zetkno.findbook.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
+import com.zetkno.findbook.pojo.User;
 import com.zetkno.findbook.service.UserService;
 import com.zetkno.findbook.utils.CodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,29 +71,37 @@ public class LoginController {
             flag.put("flag", false);
             flag.put("error", "验证码有误");
             return flag;
+        } else {
+            flag.put("flag", true);
+            flag.put("msg", "验证码正确");
         }
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
 
         if (!userService.checkUser(username)) {
+
             flag.put("flag", false);
             flag.put("error", "用户不存在！");
         }else {
-            String passwordReslt = userService.getPassword(username);
+            User user = userService.getUserByUsername(username);
+            String passwordReslt = user.getPassword();
+            System.out.println("数据库的用户密码: " + passwordReslt);
             if (password.equals(passwordReslt)) {
                 flag.put("flag", true);
+                flag.put("msg","登录成功");
             } else {
                 flag.put("flag", false);
                 flag.put("error", "密码错误！");
             }
         }
-
-
-//        String result =
-
-
         return flag;
+    }
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        return "index";
     }
 
 }

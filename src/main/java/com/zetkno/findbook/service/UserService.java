@@ -13,19 +13,22 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
     User user;
 
     public boolean checkUser(String userName) {
         user = userMapper.selectByUserName(userName);
+        System.out.println("数据内的用户名：" + user.getUserName());
         if (user == null)
             return false;
         else
             return true;
     }
-    public String getPassword(String username) {
-        return userMapper.selectByUserName(username).getPassword();
+
+    public User getUserByUsername(String username) {
+
+        return userMapper.selectByUserName(username);
     }
 
 

@@ -17,9 +17,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-//
     User selectByUserName(String nmae);
 
-//    查询用户名所对应的密码
-    String selectPasswordByUserName(String userName);
+
 }

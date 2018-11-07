@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>管理员登录</title>
     <script type="text/javascript">
         function refresh() {
             document.getElementById('captcha_img').src="/kaptcha?"+Math.random();
@@ -10,8 +10,10 @@
     </script>
 </head>
 <body>
-<form action="/hello" method="post">
-    验证码:  <input type="text" placeholder="请输入验证码" name="verifyCodeActual">
+<form action="/login" method="post">
+    用户名：<input type="text" placeholder="请输入用户名" name="username"/><br />
+    密码：<input type="password" placeholder="请输入密码" name="password"/><br />
+    验证码:  <input type="text" placeholder="请输入验证码" name="verifyCodeActual" />
     <div class="item-input">
         <img id="captcha_img" alt="点击更换" title="点击更换"
              onclick="refresh()" src="/kaptcha" />

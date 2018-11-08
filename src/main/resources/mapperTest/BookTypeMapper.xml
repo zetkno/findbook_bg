@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zetkno.findbook.dao.BookTypeMapper">
+  <resultMap id="BaseResultMap" type="com.zetkno.findbook.pojo.BookType">
+    <id column="typeId" jdbcType="INTEGER" property="typeId" />
+    <result column="parentId" jdbcType="VARCHAR" property="parentId" />
+    <result column="parentName" jdbcType="VARCHAR" property="parentName" />
+    <result column="typeName" jdbcType="VARCHAR" property="typeName" />
+    <result column="typeCode" jdbcType="BIGINT" property="typeCode" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from book_type
+    where typeId = #{typeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zetkno.findbook.pojo.BookType">
+    insert into book_type (typeId, parentId, parentName, 
+      typeName, typeCode)
+    values (#{typeId,jdbcType=INTEGER}, #{parentId,jdbcType=VARCHAR}, #{parentName,jdbcType=VARCHAR}, 
+      #{typeName,jdbcType=VARCHAR}, #{typeCode,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zetkno.findbook.pojo.BookType">
+    update book_type
+    set parentId = #{parentId,jdbcType=VARCHAR},
+      parentName = #{parentName,jdbcType=VARCHAR},
+      typeName = #{typeName,jdbcType=VARCHAR},
+      typeCode = #{typeCode,jdbcType=BIGINT}
+    where typeId = #{typeId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select typeId, parentId, parentName, typeName, typeCode
+    from book_type
+    where typeId = #{typeId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select typeId, parentId, parentName, typeName, typeCode
+    from book_type
+  </select>
+</mapper>

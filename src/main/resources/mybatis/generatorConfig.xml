@@ -53,13 +53,13 @@
             <property name="useActualColumnNames" value="true"/>
 
         </table>
-        <!--<table schema="root" tableName="book" domainObjectName="Book"-->
-               <!--enableCountByExample="false" enableUpdateByExample="false"-->
-               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
-               <!--selectByExampleQueryId="false">-->
-            <!--<property name="useActualColumnNames" value="true"/>-->
+        <table schema="root" tableName="book" domainObjectName="Book"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
 
-        <!--</table>-->
+        </table>
 
 
 

@@ -13,7 +13,7 @@ public class Book {
 
     private String translator;
 
-    private String category;
+    private Long category;
 
     private String bookNumber;
 
@@ -22,6 +22,39 @@ public class Book {
     private Date publishDate;
 
     private String introduce;
+
+    private BookType bookType;
+
+    public Book() {
+
+    }
+
+    public Book(Integer bookId, String bookName,
+                String bookEngName, String author,
+                String translator, Long category,
+                String bookNumber, String publishHours,
+                Date publishDate, String introduce,
+                BookType bookType) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.bookEngName = bookEngName;
+        this.author = author;
+        this.translator = translator;
+        this.category = category;
+        this.bookNumber = bookNumber;
+        this.publishHours = publishHours;
+        this.publishDate = publishDate;
+        this.introduce = introduce;
+        this.bookType = bookType;
+    }
+
+    public BookType getBookType() {
+        return bookType;
+    }
+
+    public void setBookType(BookType bookType) {
+        this.bookType = bookType;
+    }
 
     public Integer getBookId() {
         return bookId;
@@ -63,11 +96,11 @@ public class Book {
         this.translator = translator == null ? null : translator.trim();
     }
 
-    public String getcategory() {
+    public Long getCategory() {
         return category;
     }
 
-    public void setcategory(String category) {
+    public void setCategory(Long category) {
         this.category = category;
     }
 
@@ -76,7 +109,7 @@ public class Book {
     }
 
     public void setBookNumber(String bookNumber) {
-        this.bookNumber = bookNumber;
+        this.bookNumber = bookNumber == null ? null : bookNumber.trim();
     }
 
     public String getPublishHours() {

@@ -9,7 +9,7 @@ public class BookType {
 
     private String typeName;
 
-    private String typeCode;
+    private Long typeCode;
 
     public Integer getTypeId() {
         return typeId;
@@ -43,11 +43,11 @@ public class BookType {
         this.typeName = typeName == null ? null : typeName.trim();
     }
 
-    public String getTypeCode() {
+    public Long getTypeCode() {
         return typeCode;
     }
 
-    public void setTypeCode(String typeCode) {
-        this.typeCode = typeCode == null ? null : typeCode.trim();
+    public void setTypeCode(Long typeCode) {
+        this.typeCode = typeCode;
     }
 }

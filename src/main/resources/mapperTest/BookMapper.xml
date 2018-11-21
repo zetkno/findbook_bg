@@ -51,4 +51,54 @@
     publishDate, introduce
     from book
   </select>
+  <resultMap id="BaseResultMap" type="com.zetkno.findbook.pojo.Book">
+    <id column="bookId" jdbcType="INTEGER" property="bookId" />
+    <result column="bookName" jdbcType="VARCHAR" property="bookName" />
+    <result column="bookEngName" jdbcType="VARCHAR" property="bookEngName" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="translator" jdbcType="VARCHAR" property="translator" />
+    <result column="category" jdbcType="BIGINT" property="category" />
+    <result column="bookNumber" jdbcType="VARCHAR" property="bookNumber" />
+    <result column="publishHours" jdbcType="VARCHAR" property="publishHours" />
+    <result column="publishDate" jdbcType="TIMESTAMP" property="publishDate" />
+    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from book
+    where bookId = #{bookId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zetkno.findbook.pojo.Book">
+    insert into book (bookId, bookName, bookEngName, 
+      author, translator, category, 
+      bookNumber, publishHours, publishDate, 
+      introduce)
+    values (#{bookId,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{bookEngName,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{translator,jdbcType=VARCHAR}, #{category,jdbcType=BIGINT}, 
+      #{bookNumber,jdbcType=VARCHAR}, #{publishHours,jdbcType=VARCHAR}, #{publishDate,jdbcType=TIMESTAMP}, 
+      #{introduce,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zetkno.findbook.pojo.Book">
+    update book
+    set bookName = #{bookName,jdbcType=VARCHAR},
+      bookEngName = #{bookEngName,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      translator = #{translator,jdbcType=VARCHAR},
+      category = #{category,jdbcType=BIGINT},
+      bookNumber = #{bookNumber,jdbcType=VARCHAR},
+      publishHours = #{publishHours,jdbcType=VARCHAR},
+      publishDate = #{publishDate,jdbcType=TIMESTAMP},
+      introduce = #{introduce,jdbcType=VARCHAR}
+    where bookId = #{bookId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select bookId, bookName, bookEngName, author, translator, category, bookNumber, publishHours, 
+    publishDate, introduce
+    from book
+    where bookId = #{bookId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select bookId, bookName, bookEngName, author, translator, category, bookNumber, publishHours, 
+    publishDate, introduce
+    from book
+  </select>
 </mapper>

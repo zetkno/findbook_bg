@@ -23,14 +23,14 @@ import java.awt.image.BufferedImage;
 public class LoginController {
 
 
-    @RequestMapping("/hello")
-    public String hello(HttpServletRequest request) {
-        if (!CodeUtil.checkVerifyCode(request)) {
-            return "验证码错误";
-        } else {
-            return "hello，world";
-        }
-    }
+//    @RequestMapping("/hello")
+//    public String hello(HttpServletRequest request) {
+//        if (!CodeUtil.checkVerifyCode(request)) {
+//            return "验证码错误";
+//        } else {
+//            return "hello，world";
+//        }
+//    }
 
     @Autowired
     private Producer kaptchaProducer;
@@ -61,7 +61,7 @@ public class LoginController {
         }
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     @ResponseBody
     public JSONObject login(HttpServletRequest request, HttpServletResponse response) {
 

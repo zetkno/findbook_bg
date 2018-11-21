@@ -13,7 +13,7 @@
     <result column="publishDate" jdbcType="TIMESTAMP" property="publishDate" />
     <result column="introduce" jdbcType="VARCHAR" property="introduce" />
   </resultMap>
-  <resultMap id="WithTypeResultMap" type="com.zetkno.findbook.pojo.Book">
+  <resultMap id="WithBookTypeResultMap" type="com.zetkno.findbook.pojo.Book">
     <id column="bookId" jdbcType="INTEGER" property="bookId" />
     <result column="bookName" jdbcType="VARCHAR" property="bookName" />
     <result column="bookEngName" jdbcType="VARCHAR" property="bookEngName" />
@@ -24,40 +24,26 @@
     <result column="publishHours" jdbcType="VARCHAR" property="publishHours" />
     <result column="publishDate" jdbcType="TIMESTAMP" property="publishDate" />
     <result column="introduce" jdbcType="VARCHAR" property="introduce" />
-    <association property="category" javaType="com.zetkno.findbook.pojo.BookType">
-      <id column="typeId" property="typeId"/>
-      <result column="parentId" property="parentId"/>
-      <result column="parentName" property="parentName"/>
+    <association property="bookType" javaType="com.zetkno.findbook.pojo.BookType">
+      <id column="category" property="category"/>
       <result column="typeName" property="typeName"/>
-      <result column="typeCode" property="typeCode"/>
     </association>
   </resultMap>
-  <sql id="WithBookType_Column_List" >
-     b.bookId, b.bookName, b.bookEngName, b.author, b.translator, b.category, b.bookNumber,
-     b.publishHours, b.publishDate, b.introduce, t.typeId, t.parentId, t.parentName, t.typeCode, t.typeName
+  <sql id="WithBookType_Column_List">
+
   </sql>
-  <!--带有书籍类型的查询-->
-  <select id="selectAllWithTypeName" resultMap="WithTypeResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="WithBookType_Column_List"/>
-    from book b left join book_type t
-    on b.category = t.typeCode
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from book
     where bookId = #{bookId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zetkno.findbook.pojo.Book">
     insert into book (bookId, bookName, bookEngName, 
-      author, translator, category,
+      author, translator, category, 
       bookNumber, publishHours, publishDate, 
       introduce)
     values (#{bookId,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{bookEngName,jdbcType=VARCHAR}, 
-      #{author,jdbcType=VARCHAR}, #{translator,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
-      #{bookNumber,jdbcType=VARCHAR}, #{publishHours,jdbcType=VARCHAR}, #{publishDate,jdbcType=TIMESTAMP},
+      #{author,jdbcType=VARCHAR}, #{translator,jdbcType=VARCHAR}, #{category,jdbcType=BIGINT}, 
+      #{bookNumber,jdbcType=VARCHAR}, #{publishHours,jdbcType=VARCHAR}, #{publishDate,jdbcType=TIMESTAMP}, 
       #{introduce,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zetkno.findbook.pojo.Book">
@@ -66,7 +52,7 @@
       bookEngName = #{bookEngName,jdbcType=VARCHAR},
       author = #{author,jdbcType=VARCHAR},
       translator = #{translator,jdbcType=VARCHAR},
-      category = #{category,jdbcType=VARCHAR},
+      category = #{category,jdbcType=BIGINT},
       bookNumber = #{bookNumber,jdbcType=VARCHAR},
       publishHours = #{publishHours,jdbcType=VARCHAR},
       publishDate = #{publishDate,jdbcType=TIMESTAMP},
@@ -74,13 +60,13 @@
     where bookId = #{bookId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select bookId, bookName, bookEngName, author, translator, category, bookNumber, publishHours,
+    select bookId, bookName, bookEngName, author, translator, category, bookNumber, publishHours, 
     publishDate, introduce
     from book
     where bookId = #{bookId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select bookId, bookName, bookEngName, author, translator, category, bookNumber, publishHours,
+    select bookId, bookName, bookEngName, author, translator, bookNumber, publishHours,
     publishDate, introduce
     from book
   </select>

@@ -23,39 +23,6 @@ public class Book {
 
     private String introduce;
 
-    private BookType bookType;
-
-    public Book() {
-
-    }
-
-    public Book(Integer bookId, String bookName,
-                String bookEngName, String author,
-                String translator, Long category,
-                String bookNumber, String publishHours,
-                Date publishDate, String introduce,
-                BookType bookType) {
-        this.bookId = bookId;
-        this.bookName = bookName;
-        this.bookEngName = bookEngName;
-        this.author = author;
-        this.translator = translator;
-        this.category = category;
-        this.bookNumber = bookNumber;
-        this.publishHours = publishHours;
-        this.publishDate = publishDate;
-        this.introduce = introduce;
-        this.bookType = bookType;
-    }
-
-    public BookType getBookType() {
-        return bookType;
-    }
-
-    public void setBookType(BookType bookType) {
-        this.bookType = bookType;
-    }
-
     public Integer getBookId() {
         return bookId;
     }

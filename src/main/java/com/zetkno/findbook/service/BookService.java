@@ -14,11 +14,11 @@ public class BookService {
     private BookMapper bookMapper;
 
     public List<Book> getAllBook() {
-        List<Book> list = bookMapper.selectAllWithTypeName();
+        List<Book> list = bookMapper.selectAll();
         for (Book book : list) {
-            System.out.println(book.getBookName());
+            System.out.println(book.getAuthor());
         }
-        return bookMapper.selectAll();
+        return list;
 
     }
 

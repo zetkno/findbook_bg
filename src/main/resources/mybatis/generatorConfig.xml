@@ -46,13 +46,13 @@
         </javaClientGenerator>
 
         <!--表对应的bean-->
-        <table schema="root" tableName="book_type" domainObjectName="BookType"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true"/>
+        <!--<table schema="root" tableName="book_type" domainObjectName="BookType"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
 
-        </table>
+        <!--</table>-->
         <table schema="root" tableName="book" domainObjectName="Book"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
@@ -60,9 +60,6 @@
             <property name="useActualColumnNames" value="true"/>
 
         </table>
-
-
-
 
 
     </context>

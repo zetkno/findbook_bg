@@ -19,15 +19,19 @@
     <result column="bookEngName" jdbcType="VARCHAR" property="bookEngName" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="translator" jdbcType="VARCHAR" property="translator" />
-    <result column="category" jdbcType="BIGINT" property="category" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
     <result column="bookNumber" jdbcType="VARCHAR" property="bookNumber" />
     <result column="publishHours" jdbcType="VARCHAR" property="publishHours" />
     <result column="publishDate" jdbcType="TIMESTAMP" property="publishDate" />
     <result column="introduce" jdbcType="VARCHAR" property="introduce" />
-    <association property="bookType" javaType="com.zetkno.findbook.pojo.BookType">
-      <id column="category" property="category"/>
-      <result column="typeName" property="typeName"/>
-    </association>
+    <association property="bookType" javaType="com.zetkno.findbook.pojo.BookType" resultMap="typeResultMap"/>
+  </resultMap>
+  <resultMap id="typeResultMap" type="com.zetkno.findbook.pojo.BookType">
+    <id column="typeId" property="typeId"/>
+    <result column="parentId" property="parentId"/>
+    <result column="parentName" property="parentName"/>
+    <result column="typeName" property="typeName"/>
+    <result column="typeCode" property="typeCode"/>
   </resultMap>
   <sql id="WithBookType_Column_List">
       b.bookId, b.bookEngName, b.author, b.translator, b.category, b.bookNumber, b.publishHours,
@@ -41,7 +45,7 @@
       </if>
     <include refid="WithBookType_Column_List"/>
     from book b
-    left join bookType t on b.category=t.typeCode
+    left join book_type t on b.category=t.typeCode
 
   </select>
 

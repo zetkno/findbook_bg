@@ -13,7 +13,9 @@ public class Book {
 
     private String translator;
 
-    private Long category;
+    private String category;
+
+    private BookType bookType;
 
     private String bookNumber;
 
@@ -63,12 +65,21 @@ public class Book {
         this.translator = translator == null ? null : translator.trim();
     }
 
-    public Long getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Long category) {
+    public void setCategory(String category) {
         this.category = category;
+    }
+
+
+    public BookType getBookType() {
+        return bookType;
+    }
+
+    public void setBookType(BookType bookType) {
+        this.bookType = bookType;
     }
 
     public String getBookNumber() {

@@ -13,8 +13,8 @@ public class BookService {
     @Autowired
     private BookMapper bookMapper;
 
-    public List<Book> getAllBook() {
-        List<Book> list = bookMapper.selectAll();
+    public List<Book> getAllBookWithType() {
+        List<Book> list = bookMapper.selectAllWithBookType();
         for (Book book : list) {
             System.out.println(book.getAuthor());
         }

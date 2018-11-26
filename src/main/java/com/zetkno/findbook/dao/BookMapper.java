@@ -15,5 +15,7 @@ public interface BookMapper {
 
     List<Book> selectAll();
 
+    List<Book> selectAllWithBookType();
+
     int updateByPrimaryKey(Book record);
 }

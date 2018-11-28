@@ -15,9 +15,7 @@ public class BookService {
 
     public List<Book> getAllBookWithType() {
         List<Book> list = bookMapper.selectAllWithBookType();
-        for (Book book : list) {
-            System.out.println(book.getAuthor());
-        }
+
         return list;
 
     }

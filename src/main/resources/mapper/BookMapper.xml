@@ -13,6 +13,7 @@
     <result column="publishDate" jdbcType="TIMESTAMP" property="publishDate" />
     <result column="introduce" jdbcType="VARCHAR" property="introduce" />
   </resultMap>
+
   <resultMap id="WithBookTypeResultMap" type="com.zetkno.findbook.pojo.Book">
     <id column="bookId" jdbcType="INTEGER" property="bookId" />
     <result column="bookName" jdbcType="VARCHAR" property="bookName" />
@@ -34,8 +35,8 @@
     <result column="typeCode" property="typeCode"/>
   </resultMap>
   <sql id="WithBookType_Column_List">
-      b.bookId, b.bookEngName, b.author, b.translator, b.category, b.bookNumber, b.publishHours,
-      b.publishDate, b.introduce,t.parentId, t.parentName, t.typeName, t.typeCode
+      b.bookId, b.bookName, b.bookEngName, b.author, b.translator, b.category, b.bookNumber, b.publishHours,
+      b.publishDate, b.introduce,t.typeId, t.parentId, t.parentName, t.typeName, t.typeCode
   </sql>
 
   <select id="selectAllWithBookType" resultMap="WithBookTypeResultMap">
@@ -46,9 +47,7 @@
     <include refid="WithBookType_Column_List"/>
     from book b
     left join book_type t on b.category=t.typeCode
-
   </select>
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from book
     where bookId = #{bookId,jdbcType=INTEGER}

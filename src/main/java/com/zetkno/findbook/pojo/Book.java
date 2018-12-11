@@ -13,7 +13,7 @@ public class Book {
 
     private String translator;
 
-    private String category;
+//    private String category;
 
     private BookType bookType;
 
@@ -65,13 +65,13 @@ public class Book {
         this.translator = translator == null ? null : translator.trim();
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
+//    public String getCategory() {
+//        return category;
+//    }
+//
+//    public void setCategory(String category) {
+//        this.category = category;
+//    }
 
 
     public BookType getBookType() {

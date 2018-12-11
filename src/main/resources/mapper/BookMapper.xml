@@ -7,7 +7,7 @@
     <result column="bookEngName" jdbcType="VARCHAR" property="bookEngName" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="translator" jdbcType="VARCHAR" property="translator" />
-    <result column="category" jdbcType="BIGINT" property="category" />
+    <!--<result column="category" jdbcType="BIGINT" property="category" />-->
     <result column="bookNumber" jdbcType="VARCHAR" property="bookNumber" />
     <result column="publishHours" jdbcType="VARCHAR" property="publishHours" />
     <result column="publishDate" jdbcType="TIMESTAMP" property="publishDate" />
@@ -20,7 +20,7 @@
     <result column="bookEngName" jdbcType="VARCHAR" property="bookEngName" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="translator" jdbcType="VARCHAR" property="translator" />
-    <result column="category" jdbcType="VARCHAR" property="category" />
+    <!--<result column="category" jdbcType="VARCHAR" property="category" />-->
     <result column="bookNumber" jdbcType="VARCHAR" property="bookNumber" />
     <result column="publishHours" jdbcType="VARCHAR" property="publishHours" />
     <result column="publishDate" jdbcType="TIMESTAMP" property="publishDate" />
@@ -35,7 +35,7 @@
     <result column="typeCode" property="typeCode"/>
   </resultMap>
   <sql id="WithBookType_Column_List">
-      b.bookId, b.bookName, b.bookEngName, b.author, b.translator, b.category, b.bookNumber, b.publishHours,
+      b.bookId, b.bookName, b.bookEngName, b.author, b.translator, b.bookNumber, b.publishHours,
       b.publishDate, b.introduce,t.typeId, t.parentId, t.parentName, t.typeName, t.typeCode
   </sql>
 

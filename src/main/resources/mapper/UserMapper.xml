@@ -53,12 +53,6 @@
     from user
     where userName = #{userName,jdbcType=VARCHAR}
   </select>
-  <!--查询用户名所对应的密码-->
-  <!--<select id="selectPasswordByUserName" parameterType="java.lang.String" resultMap="java.lang.String">-->
-    <!--select password-->
-    <!--from user-->
-    <!--where userName = #{userName,jdbcType=VARCHAR}-->
-  <!--</select>-->
   <select id="selectAll" resultMap="BaseResultMap">
     select userid, userName, password, gender, phoneNum, administrator, favoriteType, 
     dailyType, email, avator

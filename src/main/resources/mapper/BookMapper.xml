@@ -14,6 +14,13 @@
     <result column="introduce" jdbcType="VARCHAR" property="introduce" />
   </resultMap>
 
+  <resultMap id="typeResultMap" type="com.zetkno.findbook.pojo.BookType">
+    <id column="typeId" property="typeId"/>
+    <result column="parentId" property="parentId"/>
+    <result column="parentName" property="parentName"/>
+    <result column="typeName" property="typeName"/>
+    <result column="typeCode" property="typeCode"/>
+  </resultMap>
   <resultMap id="WithBookTypeResultMap" type="com.zetkno.findbook.pojo.Book">
     <id column="bookId" jdbcType="INTEGER" property="bookId" />
     <result column="bookName" jdbcType="VARCHAR" property="bookName" />
@@ -27,13 +34,7 @@
     <result column="introduce" jdbcType="VARCHAR" property="introduce" />
     <association property="bookType" javaType="com.zetkno.findbook.pojo.BookType" resultMap="typeResultMap"/>
   </resultMap>
-  <resultMap id="typeResultMap" type="com.zetkno.findbook.pojo.BookType">
-    <id column="typeId" property="typeId"/>
-    <result column="parentId" property="parentId"/>
-    <result column="parentName" property="parentName"/>
-    <result column="typeName" property="typeName"/>
-    <result column="typeCode" property="typeCode"/>
-  </resultMap>
+
   <sql id="WithBookType_Column_List">
       b.bookId, b.bookName, b.bookEngName, b.author, b.translator, b.bookNumber, b.publishHours,
       b.publishDate, b.introduce,t.typeId, t.parentId, t.parentName, t.typeName, t.typeCode
@@ -46,7 +47,7 @@
       </if>
     <include refid="WithBookType_Column_List"/>
     from book b
-    left join book_type t on b.category=t.typeCode
+    left join book_type t on b.typeCode=t.typeCode
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from book

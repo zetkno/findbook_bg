@@ -31,10 +31,7 @@ public class UserService {
         return userMapper.selectByUserName(username);
     }
 
-
-//    @Override
-//    public String getPassword(String userName) {
-//
-//        return userMapper.selectPasswordByUserName(userName);
-//    }
+    public List<User> getAllUser() {
+        return userMapper.selectAll();
+    }
 }

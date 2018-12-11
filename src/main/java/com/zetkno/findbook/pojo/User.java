@@ -13,9 +13,9 @@ public class User {
 
     private Boolean administrator;
 
-    private Byte favoriteType;
+    private BookType favoriteType;
 
-    private Byte dailyType;
+    private BookType dailyType;
 
     private String email;
 
@@ -69,19 +69,36 @@ public class User {
         this.administrator = administrator;
     }
 
-    public Byte getFavoriteType() {
+//    public Byte getFavoriteType() {
+//        return favoriteType;
+//    }
+//
+//    public void setFavoriteType(Byte favoriteType) {
+//        this.favoriteType = favoriteType;
+//    }
+//
+//    public Byte getDailyType() {
+//        return dailyType;
+//    }
+//
+//    public void setDailyType(Byte dailyType) {
+//        this.dailyType = dailyType;
+//    }
+
+
+    public BookType getFavoriteType() {
         return favoriteType;
     }
 
-    public void setFavoriteType(Byte favoriteType) {
+    public void setFavoriteType(BookType favoriteType) {
         this.favoriteType = favoriteType;
     }
 
-    public Byte getDailyType() {
+    public BookType getDailyType() {
         return dailyType;
     }
 
-    public void setDailyType(Byte dailyType) {
+    public void setDailyType(BookType dailyType) {
         this.dailyType = dailyType;
     }
 

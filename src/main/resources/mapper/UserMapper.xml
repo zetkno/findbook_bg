@@ -15,24 +15,29 @@
     <result column="gender" jdbcType="VARCHAR" property="gender" />
     <result column="phoneNum" jdbcType="VARCHAR" property="phoneNum" />
     <result column="administrator" jdbcType="BIT" property="administrator" />
-    <!--<result column="favoriteType" jdbcType="VARCHAR" property="favoriteType" />-->
-    <!--<result column="dailyType" jdbcType="VARCHAR" property="dailyType" />-->
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="avator" jdbcType="VARCHAR" property="avator" />
-    <association property="favoriteType" javaType="com.zetkno.findbook.pojo.BookType" resultMap="typeResultMap" />
-    <association property="dailyType" javaType="com.zetkno.findbook.pojo.BookType" resultMap="typeResultMap"/>
+    <!--<association property="favoriteType" javaType="com.zetkno.findbook.pojo.BookType" resultMap="typeResultMap" />-->
+      <collection property="favoriteType" javaType="ArrayList" column="favoriteType"
+                  ofType="com.zetkno.findbook.pojo.BookType">
+          <result column="typeId" property="typeId"/>
+          <result column="parentId" property="parentId"/>
+          <result column="parentName" property="parentName"/>
+          <result column="typeName" property="typeName"/>
+          <result column="typeCode" property="typeCode"/>
+      </collection>
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
-    where userid = #{userid,jdbcType=INTEGER}
-  </delete>
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+    <!--delete from user-->
+    <!--where userid = #{userid,jdbcType=INTEGER}-->
+  <!--</delete>-->
   <!--<insert id="insert" parameterType="com.zetkno.findbook.pojo.User">-->
-    <!--insert into user (userid, userName, password, -->
-      <!--gender, phoneNum, administrator, -->
-      <!--favoriteType, dailyType, email, -->
+    <!--insert into user (userid, userName, password,-->
+      <!--gender, phoneNum, administrator,-->
+      <!--favoriteType, dailyType, email,-->
       <!--avator)-->
-    <!--values (#{userid,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, -->
-      <!--#{gender,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, #{administrator,jdbcType=BIT}, -->
+    <!--values (#{userid,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},-->
+      <!--#{gender,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, #{administrator,jdbcType=BIT},-->
       <!--#{favoriteType,jdbcType=VARCHAR}, #{dailyType,jdbcType=VARHCAR}, #{email,jdbcType=VARCHAR},-->
       <!--#{avator,jdbcType=VARCHAR})-->
   <!--</insert>-->
@@ -49,24 +54,24 @@
       <!--avator = #{avator,jdbcType=VARCHAR}-->
     <!--where userid = #{userid,jdbcType=INTEGER}-->
   <!--</update>-->
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select userid, userName, password, gender, phoneNum, administrator, favoriteType, 
-    dailyType, email, avator
-    from user
-    where userid = #{userid,jdbcType=INTEGER}
-  </select>
-  <!---->
-  <select id="selectByUserName"  parameterType="java.lang.String" resultMap="BaseResultMap">
-    select userid, userName, password, gender, phoneNum, administrator, favoriteType,
-    dailyType, email, avator
-    from user
-    where userName = #{userName,jdbcType=VARCHAR}
-  </select>
+
+  <!--<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+    <!--select userid, userName, password, gender, phoneNum, administrator, favoriteType, -->
+    <!--dailyType, email, avator-->
+    <!--from user-->
+    <!--where userid = #{userid,jdbcType=INTEGER}-->
+  <!--</select>-->
+
+  <!--<select id="selectByUserName"  parameterType="java.lang.String" resultMap="BaseResultMap">-->
+    <!--select userid, userName, password, gender, phoneNum, administrator, favoriteType,-->
+    <!--dailyType, email, avator-->
+    <!--from user-->
+    <!--where userName = #{userName,jdbcType=VARCHAR}-->
+  <!--</select>-->
   <select id="selectAll" resultMap="BaseResultMap">
     select u.userid, u.userName, u.password, u.gender, u.phoneNum, u.administrator, u.favoriteType,
     u.dailyType, u.email, u.avator, t.typeId, t.parentId, t.parentName, t.typeName, t.typeCode
-    from user u·
-    left JOIN book_type t on u.favoriteType = t.typeCode
-    LEFT JOIN book_type on u.dailyType = t.typeCode
+    from user u
+      LEFT join book_type t on u.favoriteType = t.typeCode
   </select>
 </mapper>

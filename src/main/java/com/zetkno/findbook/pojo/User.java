@@ -1,5 +1,7 @@
 package com.zetkno.findbook.pojo;
 
+import java.util.List;
+
 public class User {
     private Integer userid;
 
@@ -13,9 +15,9 @@ public class User {
 
     private Boolean administrator;
 
-    private BookType favoriteType;
+    private List<BookType> favoriteType;
 
-    private BookType dailyType;
+    private List<BookType> dailyType;
 
     private String email;
 
@@ -69,36 +71,19 @@ public class User {
         this.administrator = administrator;
     }
 
-//    public Byte getFavoriteType() {
-//        return favoriteType;
-//    }
-//
-//    public void setFavoriteType(Byte favoriteType) {
-//        this.favoriteType = favoriteType;
-//    }
-//
-//    public Byte getDailyType() {
-//        return dailyType;
-//    }
-//
-//    public void setDailyType(Byte dailyType) {
-//        this.dailyType = dailyType;
-//    }
-
-
-    public BookType getFavoriteType() {
+    public List<BookType> getFavoriteType() {
         return favoriteType;
     }
 
-    public void setFavoriteType(BookType favoriteType) {
+    public void setFavoriteType(List<BookType> favoriteType) {
         this.favoriteType = favoriteType;
     }
 
-    public BookType getDailyType() {
+    public List<BookType> getDailyType() {
         return dailyType;
     }
 
-    public void setDailyType(BookType dailyType) {
+    public void setDailyType(List<BookType> dailyType) {
         this.dailyType = dailyType;
     }
 

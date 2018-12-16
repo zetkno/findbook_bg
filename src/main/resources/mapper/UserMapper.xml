@@ -65,7 +65,7 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select u.userid, u.userName, u.password, u.gender, u.phoneNum, u.administrator, u.favoriteType,
     u.dailyType, u.email, u.avator, t.typeId, t.parentId, t.parentName, t.typeName, t.typeCode
-    from user u
+    from user u·
     left JOIN book_type t on u.favoriteType = t.typeCode
     LEFT JOIN book_type on u.dailyType = t.typeCode
   </select>

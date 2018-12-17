@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zetkno.findbook.dao.UserMapper">
-  <resultMap id="typeResultMap" type="com.zetkno.findbook.pojo.BookType">
-    <id column="typeId" property="typeId"/>
-    <result column="parentId" property="parentId"/>
-    <result column="parentName" property="parentName"/>
-    <result column="typeName" property="typeName"/>
-    <result column="typeCode" property="typeCode"/>
-  </resultMap>
   <resultMap id="BaseResultMap" type="com.zetkno.findbook.pojo.User">
     <id column="userid" jdbcType="INTEGER" property="userid" />
     <result column="userName" jdbcType="VARCHAR" property="userName" />
@@ -26,6 +19,14 @@
           <result column="typeName" property="typeName"/>
           <result column="typeCode" property="typeCode"/>
       </collection>
+    <collection property="dailyType" javaType="ArrayList" column="dailyType"
+                ofType="com.zetkno.findbook.pojo.BookType">
+      <result column="typeId" property="typeId"/>
+      <result column="parentId" property="parentId"/>
+      <result column="parentName" property="parentName"/>
+      <result column="typeName" property="typeName"/>
+      <result column="typeCode" property="typeCode"/>
+    </collection>
   </resultMap>
   <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
     <!--delete from user-->
@@ -73,5 +74,12 @@
     u.dailyType, u.email, u.avator, t.typeId, t.parentId, t.parentName, t.typeName, t.typeCode
     from user u
       LEFT join book_type t on u.favoriteType = t.typeCode
+  </select>
+  <select id="selectWithAll" resultMap="BaseResultMap">
+    select u.userid, u.userName, u.password, u.gender, u.phoneNum, u.administrator, u.favoriteType, u.dailyType, u.email, u.avator,
+      t.typeId, t.parentId, t.parentName, t.typeName, t.typeCode,
+      bt.typeId, bt.parentId, bt.parentName, bt.typeName, bt.typeCode
+    from user u,findbook.book_type t, findbook.book_type bt
+    where u.favoriteType = t.typeCode and u.dailyType = bt.typeCode
   </select>
 </mapper>

@@ -32,6 +32,6 @@ public class UserService {
     }
 
     public List<User> getAllUser() {
-        return userMapper.selectAll();
+        return userMapper.selectWithAll();
     }
 }

@@ -18,7 +18,6 @@
         <typeAlias type="java.util.LinkedList" alias="LinkedList"/>
         <typeAlias type="com.zetkno.findbook.pojo.User" alias="user"/>
     </typeAliases>
-
 </configuration>
 
 

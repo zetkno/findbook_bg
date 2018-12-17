@@ -19,6 +19,10 @@ public class User {
 
     private List<BookType> dailyType;
 
+//    private BookType favoriteType;
+//
+//    private BookType dailyType;
+
     private String email;
 
     private String avator;
@@ -86,6 +90,23 @@ public class User {
     public void setDailyType(List<BookType> dailyType) {
         this.dailyType = dailyType;
     }
+
+
+//    public BookType getFavoriteType() {
+//        return favoriteType;
+//    }
+
+//    public void setFavoriteType(BookType favoriteType) {
+//        this.favoriteType = favoriteType;
+//    }
+
+//    public BookType getDailyType() {
+//        return dailyType;
+//    }
+
+//    public void setDailyType(BookType dailyType) {
+//        this.dailyType = dailyType;
+//    }
 
     public String getEmail() {
         return email;

@@ -1,39 +1,43 @@
 /*
-Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
-Source Server         : localhost_3306
-Source Server Version : 50718
-Source Host           : localhost:3306
-Source Database       : findbook
+ Source Server         : localhost
+ Source Server Type    : MySQL
+ Source Server Version : 80011
+ Source Host           : localhost:3306
+ Source Schema         : findbook
 
-Target Server Type    : MYSQL
-Target Server Version : 50718
-File Encoding         : 65001
+ Target Server Type    : MySQL
+ Target Server Version : 80011
+ File Encoding         : 65001
 
-Date: 2018-12-11 23:37:29
+ Date: 17/12/2018 18:42:27
 */
 
-SET FOREIGN_KEY_CHECKS=0;
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
 -- Table structure for book_type
 -- ----------------------------
 DROP TABLE IF EXISTS `book_type`;
-CREATE TABLE `book_type` (
+CREATE TABLE `book_type`  (
   `typeId` int(11) NOT NULL,
-  `parentId` varchar(255) DEFAULT NULL,
-  `parentName` varchar(255) DEFAULT NULL,
-  `typeName` varchar(255) DEFAULT NULL,
-  `typeCode` varchar(255) DEFAULT NULL,
+  `parentId` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `parentName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `typeName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `typeCode` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`typeId`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of book_type
 -- ----------------------------
-INSERT INTO `book_type` VALUES ('1', '101', '言情小说', '言情小说', '1010');
-INSERT INTO `book_type` VALUES ('2', '101', '言情小说', '后宫文', '1011');
-INSERT INTO `book_type` VALUES ('3', '101', '言情小说', '穿越文', '1012');
-INSERT INTO `book_type` VALUES ('4', '101', '言情小说', '都市文', '1013');
-INSERT INTO `book_type` VALUES ('5', '101', '言情小说', '青春校园', '1014');
-INSERT INTO `book_type` VALUES ('6', '102', '武侠小说', '武侠小说', '1020');
+INSERT INTO `book_type` VALUES (1, '101', '计算机', 'C', '1010');
+INSERT INTO `book_type` VALUES (2, '101', '计算机', 'C++', '1011');
+INSERT INTO `book_type` VALUES (3, '101', '计算机', 'java', '1012');
+INSERT INTO `book_type` VALUES (4, '101', '计算机', 'javaScript', '1013');
+INSERT INTO `book_type` VALUES (5, '101', '计算机', 'Go语言', '1014');
+INSERT INTO `book_type` VALUES (6, '101', '计算机', 'Swift', '1015');
+
+SET FOREIGN_KEY_CHECKS = 1;

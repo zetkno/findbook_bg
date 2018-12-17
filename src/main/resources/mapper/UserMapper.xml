@@ -10,7 +10,15 @@
     <result column="administrator" jdbcType="BIT" property="administrator" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="avator" jdbcType="VARCHAR" property="avator" />
-    <!--<association property="favoriteType" javaType="com.zetkno.findbook.pojo.BookType" resultMap="typeResultMap" />-->
+    <!--<association property="favoriteType" javaType="com.zetkno.findbook.pojo.BookType"-->
+                 <!--resultMap="BookTypeMapper.BaseResultMap" />-->
+    <!--<association property="dailyType" javaType="com.zetkno.findbook.pojo.BookType" >-->
+      <!--<id property="typeId" column="btid"/>-->
+      <!--<result property="parentId" column="btParentId"/>-->
+      <!--<result property="parentName" column="btParentName"/>-->
+      <!--<result property="typeName" column="btName"/>-->
+      <!--<result property="typeCode" column="btCode"/>-->
+    <!--</association>-->
       <collection property="favoriteType" javaType="ArrayList" column="favoriteType"
                   ofType="com.zetkno.findbook.pojo.BookType">
           <result column="typeId" property="typeId"/>
@@ -21,17 +29,17 @@
       </collection>
     <collection property="dailyType" javaType="ArrayList" column="dailyType"
                 ofType="com.zetkno.findbook.pojo.BookType">
-      <result column="typeId" property="typeId"/>
-      <result column="parentId" property="parentId"/>
-      <result column="parentName" property="parentName"/>
-      <result column="typeName" property="typeName"/>
-      <result column="typeCode" property="typeCode"/>
+      <result column="btid" property="typeId"/>
+      <result column="btParentId" property="parentId"/>
+      <result column="btParentName" property="parentName"/>
+      <result column="btName" property="typeName"/>
+      <result column="btCode" property="typeCode"/>
     </collection>
   </resultMap>
-  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
-    <!--delete from user-->
-    <!--where userid = #{userid,jdbcType=INTEGER}-->
-  <!--</delete>-->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where userid = #{userid,jdbcType=INTEGER}
+  </delete>
   <!--<insert id="insert" parameterType="com.zetkno.findbook.pojo.User">-->
     <!--insert into user (userid, userName, password,-->
       <!--gender, phoneNum, administrator,-->
@@ -39,7 +47,7 @@
       <!--avator)-->
     <!--values (#{userid,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},-->
       <!--#{gender,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, #{administrator,jdbcType=BIT},-->
-      <!--#{favoriteType,jdbcType=VARCHAR}, #{dailyType,jdbcType=VARHCAR}, #{email,jdbcType=VARCHAR},-->
+      <!--#{favoriteType}, #{dailyType,jdbcType=VARHCAR}, #{email,jdbcType=VARCHAR},-->
       <!--#{avator,jdbcType=VARCHAR})-->
   <!--</insert>-->
   <!--<update id="updateByPrimaryKey" parameterType="com.zetkno.findbook.pojo.User">-->
@@ -49,37 +57,37 @@
       <!--gender = #{gender,jdbcType=VARCHAR},-->
       <!--phoneNum = #{phoneNum,jdbcType=VARCHAR},-->
       <!--administrator = #{administrator,jdbcType=BIT},-->
-      <!--favoriteType = #{favoriteType,jdbcType=VARCHAR},-->
+      <!--favoriteType = #{favoriteType},-->
       <!--dailyType = #{dailyType,jdbcType=VARCHAR},-->
       <!--email = #{email,jdbcType=VARCHAR},-->
       <!--avator = #{avator,jdbcType=VARCHAR}-->
     <!--where userid = #{userid,jdbcType=INTEGER}-->
   <!--</update>-->
 
-  <!--<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
-    <!--select userid, userName, password, gender, phoneNum, administrator, favoriteType, -->
-    <!--dailyType, email, avator-->
-    <!--from user-->
-    <!--where userid = #{userid,jdbcType=INTEGER}-->
-  <!--</select>-->
-
-  <!--<select id="selectByUserName"  parameterType="java.lang.String" resultMap="BaseResultMap">-->
-    <!--select userid, userName, password, gender, phoneNum, administrator, favoriteType,-->
-    <!--dailyType, email, avator-->
-    <!--from user-->
-    <!--where userName = #{userName,jdbcType=VARCHAR}-->
-  <!--</select>-->
-  <select id="selectAll" resultMap="BaseResultMap">
-    select u.userid, u.userName, u.password, u.gender, u.phoneNum, u.administrator, u.favoriteType,
-    u.dailyType, u.email, u.avator, t.typeId, t.parentId, t.parentName, t.typeName, t.typeCode
-    from user u
-      LEFT join book_type t on u.favoriteType = t.typeCode
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select userid, userName, password, gender, phoneNum, administrator, favoriteType,
+    dailyType, email, avator
+    from user
+    where userid = #{userid,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByUserName"  parameterType="java.lang.String" resultMap="BaseResultMap">
+    select userid, userName, password, gender, phoneNum, administrator, favoriteType,
+    dailyType, email, avator
+    from user
+    where userName = #{userName,jdbcType=VARCHAR}
+  </select>
+
   <select id="selectWithAll" resultMap="BaseResultMap">
     select u.userid, u.userName, u.password, u.gender, u.phoneNum, u.administrator, u.favoriteType, u.dailyType, u.email, u.avator,
       t.typeId, t.parentId, t.parentName, t.typeName, t.typeCode,
-      bt.typeId, bt.parentId, bt.parentName, bt.typeName, bt.typeCode
-    from user u,findbook.book_type t, findbook.book_type bt
-    where u.favoriteType = t.typeCode and u.dailyType = bt.typeCode
+      bt.typeId  btid,
+      bt.parentId btParentId,
+      bt.parentName  btParentName,
+      bt.typeName btName,
+      bt.typeCode btCode
+    from user u
+      left join book_type t on u.favoriteType = t.typeCode
+      left join book_type bt on u.dailyType = bt.typeCode
   </select>
 </mapper>

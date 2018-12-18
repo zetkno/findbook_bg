@@ -16,7 +16,10 @@
         <typeAlias type="java.util.LinkedHashMap" alias="LinkedHashMap"/>
         <typeAlias type="java.util.ArrayList" alias="ArrayList"/>
         <typeAlias type="java.util.LinkedList" alias="LinkedList"/>
-        <typeAlias type="com.zetkno.findbook.pojo.User" alias="user"/>
+        <typeAlias type="com.zetkno.findbook.pojo.User" alias="User"/>
+        <typeAlias type="com.zetkno.findbook.pojo.BookType" alias="BookType"/>
+        <typeAlias type="com.zetkno.findbook.pojo.Book" alias="Book"/>
+        <typeAlias type="com.zetkno.findbook.pojo.FavoriteType" alias="FavoriteType"/>
     </typeAliases>
 </configuration>
 

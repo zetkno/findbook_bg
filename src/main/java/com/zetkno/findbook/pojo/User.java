@@ -15,9 +15,11 @@ public class User {
 
     private Boolean administrator;
 
-    private List<BookType> favoriteType;
+    private String signature;
 
-    private List<BookType> dailyType;
+//    private List<BookType> favoriteType;
+
+//    private List<BookType> dailyType;
 
 //    private BookType favoriteType;
 //
@@ -75,21 +77,21 @@ public class User {
         this.administrator = administrator;
     }
 
-    public List<BookType> getFavoriteType() {
-        return favoriteType;
-    }
+//    public List<BookType> getFavoriteType() {
+//        return favoriteType;
+//    }
 
-    public void setFavoriteType(List<BookType> favoriteType) {
-        this.favoriteType = favoriteType;
-    }
+//    public void setFavoriteType(List<BookType> favoriteType) {
+//        this.favoriteType = favoriteType;
+//    }
 
-    public List<BookType> getDailyType() {
-        return dailyType;
-    }
-
-    public void setDailyType(List<BookType> dailyType) {
-        this.dailyType = dailyType;
-    }
+//    public List<BookType> getDailyType() {
+//        return dailyType;
+//    }
+//
+//    public void setDailyType(List<BookType> dailyType) {
+//        this.dailyType = dailyType;
+//    }
 
 
 //    public BookType getFavoriteType() {
@@ -122,5 +124,13 @@ public class User {
 
     public void setAvator(String avator) {
         this.avator = avator == null ? null : avator.trim();
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
     }
 }

@@ -20,21 +20,26 @@
       <!--<result property="typeCode" column="btCode"/>-->
     <!--</association>-->
       <collection property="favoriteType" javaType="ArrayList" column="favoriteType"
-                  ofType="com.zetkno.findbook.pojo.BookType">
-          <result column="typeId" property="typeId"/>
-          <result column="parentId" property="parentId"/>
-          <result column="parentName" property="parentName"/>
-          <result column="typeName" property="typeName"/>
+                  ofType="FavoriteType">
+          <result column="id" property="id"/>
+          <result column="userid" property="userid"/>
           <result column="typeCode" property="typeCode"/>
+          <association property="bookType" javaType="BookType">
+            <result column="btid" property="typeId"/>
+            <result column="btParentId" property="parentId"/>
+            <result column="btParentName" property="parentName"/>
+            <result column="btName" property="typeName"/>
+            <result column="btCode" property="typeCode"/>
+          </association>
       </collection>
-    <collection property="dailyType" javaType="ArrayList" column="dailyType"
-                ofType="com.zetkno.findbook.pojo.BookType">
-      <result column="btid" property="typeId"/>
-      <result column="btParentId" property="parentId"/>
-      <result column="btParentName" property="parentName"/>
-      <result column="btName" property="typeName"/>
-      <result column="btCode" property="typeCode"/>
-    </collection>
+    <!--<collection property="dailyType" javaType="ArrayList" column="dailyType"-->
+                <!--ofType="com.zetkno.findbook.pojo.BookType">-->
+      <!--<result column="btid" property="typeId"/>-->
+      <!--<result column="btParentId" property="parentId"/>-->
+      <!--<result column="btParentName" property="parentName"/>-->
+      <!--<result column="btName" property="typeName"/>-->
+      <!--<result column="btCode" property="typeCode"/>-->
+    <!--</collection>-->
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
@@ -79,15 +84,19 @@
   </select>
 
   <select id="selectWithAll" resultMap="BaseResultMap">
-    select u.userid, u.userName, u.password, u.gender, u.phoneNum, u.administrator, u.favoriteType, u.dailyType, u.email, u.avator,
-      t.typeId, t.parentId, t.parentName, t.typeName, t.typeCode,
-      bt.typeId  btid,
-      bt.parentId btParentId,
-      bt.parentName  btParentName,
-      bt.typeName btName,
-      bt.typeCode btCode
+    select u.userid,
+      u.userName,
+      u.password,
+      u.gender,
+      u.phoneNum,
+      u.administrator,
+      u.email,
+      u.avator,
+      ft.typeCode,
+      bt.typeName
     from user u
-      left join book_type t on u.favoriteType = t.typeCode
-      left join book_type bt on u.dailyType = bt.typeCode
+      left join favorite_type ft on u.userid = ft.userid
+      left join book_type bt on bt.typeCode = ft.typeCode
+    ORDER BY userid
   </select>
 </mapper>

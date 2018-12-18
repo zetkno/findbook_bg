@@ -17,7 +17,7 @@ public class User {
 
     private String signature;
 
-//    private List<BookType> favoriteType;
+    private List<BookType> favoriteType;
 
 //    private List<BookType> dailyType;
 
@@ -77,13 +77,13 @@ public class User {
         this.administrator = administrator;
     }
 
-//    public List<BookType> getFavoriteType() {
-//        return favoriteType;
-//    }
+    public List<BookType> getFavoriteType() {
+        return favoriteType;
+    }
 
-//    public void setFavoriteType(List<BookType> favoriteType) {
-//        this.favoriteType = favoriteType;
-//    }
+    public void setFavoriteType(List<BookType> favoriteType) {
+        this.favoriteType = favoriteType;
+    }
 
 //    public List<BookType> getDailyType() {
 //        return dailyType;

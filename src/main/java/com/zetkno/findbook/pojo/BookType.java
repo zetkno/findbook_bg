@@ -9,7 +9,7 @@ public class BookType {
 
     private String typeName;
 
-    private String typeCode;
+    private Integer typeCode;
 
     public BookType() {
 
@@ -19,7 +19,7 @@ public class BookType {
 //        this.typeName = typeName;
 //    }
 
-    public BookType(Integer typeId, String parentId, String parentName, String typeName, String typeCode) {
+    public BookType(Integer typeId, String parentId, String parentName, String typeName, Integer typeCode) {
         this.typeId = typeId;
         this.parentId = parentId;
         this.parentName = parentName;
@@ -59,11 +59,11 @@ public class BookType {
         this.typeName = typeName == null ? null : typeName.trim();
     }
 
-    public String getTypeCode() {
+    public Integer getTypeCode() {
         return typeCode;
     }
 
-    public void setTypeCode(String typeCode) {
+    public void setTypeCode(Integer typeCode) {
         this.typeCode = typeCode;
     }
 }

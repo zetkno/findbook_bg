@@ -84,11 +84,20 @@
   </select>
 
   <select id="selectWithAll" resultMap="BaseResultMap">
-    select u.*,
+    select
+      u.*,
       ft.*,
       bt.*
     from user u
-      left join favorite_type ft on u.userid = ft.userid
-      left join book_type bt on bt.typeCode = ft.typeCode
+    left join favorite_type ft on u.userid = ft.userid
+    left join book_type bt on bt.typeCode = ft.typeCode
+    order by u.userid
   </select>
 </mapper>
+         <!--select u.*,-->
+           <!--ft.*,-->
+           <!--bt.*-->
+         <!--from user u-->
+           <!--left join favorite_type ft on u.userid = ft.userid-->
+           <!--left join book_type bt on bt.typeCode = ft.typeCode-->
+         <!--order by u.userid-->

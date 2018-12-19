@@ -6,10 +6,15 @@ public class FavoriteType {
     private Integer userid;
 
     private Integer typeCode;
+
     private BookType bookType;
+
     public FavoriteType() {
 
     }
+//    public FavoriteType(Integer userid) {
+//        this.userid = userid;
+//    }
 
     public Integer getId() {
         return id;

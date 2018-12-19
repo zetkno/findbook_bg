@@ -15,10 +15,6 @@ public class BookType {
 
     }
 
-//    public BookType (String  typeName) {
-//        this.typeName = typeName;
-//    }
-
     public BookType(Integer typeId, String parentId, String parentName, String typeName, Integer typeCode) {
         this.typeId = typeId;
         this.parentId = parentId;

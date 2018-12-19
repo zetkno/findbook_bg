@@ -19,7 +19,7 @@
       <!--<result property="typeName" column="btName"/>-->
       <!--<result property="typeCode" column="btCode"/>-->
     <!--</association>-->
-      <collection property="favoriteType" javaType="ArrayList"
+      <collection property="favoriteTypes" javaType="ArrayList"
                   ofType="FavoriteType">
           <result column="id" property="id"/>
           <result column="userid" property="userid"/>
@@ -84,12 +84,13 @@
   </select>
 
   <select id="selectWithAll" resultMap="BaseResultMap">
-    select u.*,
+    select
+      u.*,
       ft.*,
       bt.*
     from user u
-      left join favorite_type ft on u.userid = ft.userid
-      left join book_type bt on bt.typeCode = ft.typeCode
-    ORDER BY u.userid
+    left join favorite_type ft on u.userid = ft.userid
+    left join book_type bt on bt.typeCode = ft.typeCode
+    order by u.userid
   </select>
 </mapper>

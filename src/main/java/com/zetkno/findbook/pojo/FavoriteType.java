@@ -12,6 +12,9 @@ public class FavoriteType {
     public FavoriteType() {
 
     }
+//    public FavoriteType(Integer userid) {
+//        this.userid = userid;
+//    }
 
     public Integer getId() {
         return id;

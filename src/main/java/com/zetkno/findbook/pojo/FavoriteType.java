@@ -2,7 +2,9 @@ package com.zetkno.findbook.pojo;
 
 public class FavoriteType {
     private Integer id;
+
     private Integer userid;
+
     private Integer typeCode;
     private BookType bookType;
     public FavoriteType() {

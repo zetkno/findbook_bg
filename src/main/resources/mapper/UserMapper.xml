@@ -25,11 +25,11 @@
           <result column="userid" property="userid"/>
           <result column="typeCode" property="typeCode"/>
           <association property="bookType" javaType="BookType">
-            <result column="btid" property="typeId"/>
-            <result column="btParentId" property="parentId"/>
-            <result column="btParentName" property="parentName"/>
-            <result column="btName" property="typeName"/>
-            <result column="btCode" property="typeCode"/>
+            <result column="typeId" property="typeId"/>
+            <result column="parentId" property="parentId"/>
+            <result column="parentName" property="parentName"/>
+            <result column="typeName" property="typeName"/>
+            <result column="typeCode" property="typeCode"/>
           </association>
       </collection>
     <!--<collection property="dailyType" javaType="ArrayList" column="dailyType"-->
@@ -84,16 +84,9 @@
   </select>
 
   <select id="selectWithAll" resultMap="BaseResultMap">
-    select u.userid,
-      u.userName,
-      u.password,
-      u.gender,
-      u.phoneNum,
-      u.administrator,
-      u.email,
-      u.avator,
-      ft.typeCode,
-      bt.typeName
+    select u.*,
+      ft.*,
+      bt.*
     from user u
       left join favorite_type ft on u.userid = ft.userid
       left join book_type bt on bt.typeCode = ft.typeCode

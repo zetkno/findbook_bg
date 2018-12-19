@@ -17,7 +17,7 @@ public class User {
 
     private String signature;
 
-//    private List<BookType> favoriteType;
+    private List<FavoriteType> favoriteTypes;
 
 //    private List<BookType> dailyType;
 
@@ -77,39 +77,6 @@ public class User {
         this.administrator = administrator;
     }
 
-//    public List<BookType> getFavoriteType() {
-//        return favoriteType;
-//    }
-
-//    public void setFavoriteType(List<BookType> favoriteType) {
-//        this.favoriteType = favoriteType;
-//    }
-
-//    public List<BookType> getDailyType() {
-//        return dailyType;
-//    }
-//
-//    public void setDailyType(List<BookType> dailyType) {
-//        this.dailyType = dailyType;
-//    }
-
-
-//    public BookType getFavoriteType() {
-//        return favoriteType;
-//    }
-
-//    public void setFavoriteType(BookType favoriteType) {
-//        this.favoriteType = favoriteType;
-//    }
-
-//    public BookType getDailyType() {
-//        return dailyType;
-//    }
-
-//    public void setDailyType(BookType dailyType) {
-//        this.dailyType = dailyType;
-//    }
-
     public String getEmail() {
         return email;
     }
@@ -132,5 +99,13 @@ public class User {
 
     public void setSignature(String signature) {
         this.signature = signature;
+    }
+
+    public List<FavoriteType> getFavoriteTypes() {
+        return favoriteTypes;
+    }
+
+    public void setFavoriteTypes(List<FavoriteType> favoriteTypes) {
+        this.favoriteTypes = favoriteTypes;
     }
 }

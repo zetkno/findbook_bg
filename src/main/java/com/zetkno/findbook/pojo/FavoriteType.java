@@ -4,7 +4,7 @@ public class FavoriteType {
     private Integer id;
     private Integer userid;
     private Integer typeCode;
-
+    private BookType bookType;
     public FavoriteType() {
 
     }
@@ -31,5 +31,13 @@ public class FavoriteType {
 
     public void setTypeCode(Integer typeCode) {
         this.typeCode = typeCode;
+    }
+
+    public BookType getBookType() {
+        return bookType;
+    }
+
+    public void setBookType(BookType bookType) {
+        this.bookType = bookType;
     }
 }

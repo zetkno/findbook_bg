@@ -19,7 +19,7 @@
       <!--<result property="typeName" column="btName"/>-->
       <!--<result property="typeCode" column="btCode"/>-->
     <!--</association>-->
-      <collection property="favoriteType" javaType="ArrayList" column="favoriteType"
+      <collection property="favoriteTypes" javaType="ArrayList"
                   ofType="FavoriteType">
           <result column="id" property="id"/>
           <result column="userid" property="userid"/>
@@ -97,6 +97,5 @@
     from user u
       left join favorite_type ft on u.userid = ft.userid
       left join book_type bt on bt.typeCode = ft.typeCode
-    ORDER BY userid
   </select>
 </mapper>

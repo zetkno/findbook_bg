@@ -90,6 +90,6 @@
     from user u
       left join favorite_type ft on u.userid = ft.userid
       left join book_type bt on bt.typeCode = ft.typeCode
-    ORDER BY userid
+    ORDER BY u.userid
   </select>
 </mapper>

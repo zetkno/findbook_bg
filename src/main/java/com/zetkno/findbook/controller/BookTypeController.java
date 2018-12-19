@@ -18,7 +18,7 @@ public class BookTypeController {
     BookTypeService bookTypeService;
 
     @RequestMapping(value = "/typeList")
-    public List<BookType> getAllType() {
+    public List<BookType> getAllType2() {
         return bookTypeService.getAllType();
     }
 
